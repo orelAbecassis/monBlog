@@ -39,7 +39,7 @@
                     </div>
                     <div class="input-group" style="margin-top: 10px">
                         <label for="floatingInputInvalid" name="errors"> </label>
-                        <input type="text" class="form-control" value="" name="mdp" placeholder="Mot de passe" aria-describedby="basic-addon1">
+                        <input type="password" class="form-control" value="" name="mdp" placeholder="Mot de passe" aria-describedby="basic-addon1">
                     </div>
 
 

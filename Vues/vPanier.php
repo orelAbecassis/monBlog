@@ -54,6 +54,8 @@ $total = 0;
                                                 <h6 class="mb-0"><?php echo $produits['prix']; ?> €</h6>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <i class="fa-sharp fa-solid fa-trash trashIcon removeToast"
+                                                   onclick="removeArticle(<?= $produits['id'] ?>)"></i>
                                                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
                                             </div>
                                         </div>
@@ -103,10 +105,28 @@ $total = 0;
         }
     </style>
 <?php } ?>
-<script> function paiement() {
+<script>
+    function paiement() {
         Swal.fire({
             icon: 'success',
         })
+    }
+    function removeArticle(articleId) {
+        $.ajax({
+            url: '<?= BASEDIR ?>/Php/vider_panier.php',
+            type: 'POST',
+            data: {
+                articleId: articleId,
+            },
+            success: function (response) {
+                response = JSON.parse(response)
+
+                $('.produit' + articleId).text(response.quantiteProduit);
+                $('.count').text(response.quantiteMax)
+
+
+            }
+        });
     }
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
